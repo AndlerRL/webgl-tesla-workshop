@@ -23,6 +23,7 @@
     "sass": "^1.49.7",
     "three": "^0.137.5",
     "use-cannon": "^0.5.3",
+    "uuid": "^8.3.2",
     "zustand": "^3.6.9"
   },
   "devDependencies": {
