@@ -8,7 +8,11 @@ import { VanillaScene } from './components/vanillaScene'
 import styles from '../styles/Home.module.scss'
 import { Orbit } from '../components/Orbit'
 import * as THREE from 'three'
-import { Environment } from '@react-three/drei'
+import { ContactShadows, Environment, Sky, Stage } from '@react-three/drei'
+import { Floor } from '../components/Floor'
+import { Bulb } from '../components/Bulb'
+import { XWall, YWall } from '../components/Wall'
+import { SkyBox } from '../components/SkyBox'
 
 declare global {
   namespace JSX {
@@ -41,12 +45,20 @@ const Home: NextPage = () => {
 
         {canvas === 'react' && (
           <div className={styles.main_scene}>
-            <Canvas style={{ background: '#00120e' }} camera={{ position: [3, 3, 3] }}>
+            <Canvas shadows style={{ background: '#00120e' }} camera={{ position: [3, 3, 3], fov: 80 }}>
               <Suspense fallback={null}>
-                <Environment preset="lobby" background />
-                <Box position={[1, 2, 0.1]} scale={[1, 1.1, 1]} />
-                <axesHelper args={[5]} />
-                <Orbit />
+                <SkyBox>
+                  {/* <fog attach="fog" args={['white', 1, 10]} /> */}
+                  <ambientLight intensity={0.2} />
+                  <pointLight />
+                  <Bulb position={[0, 20, 0]} />
+                  <Box position={[0, 5, 0]} scale={[2, 2.5, 2]} />
+                  <XWall position={[50, 9.25, 0]} />
+                  <XWall position={[-50, 9.25, 0]} />
+                  <YWall position={[0, 9.25, 50]} />
+                  <YWall position={[0, 9.25, -50]} />
+                  <Floor />
+                </SkyBox>
               </Suspense>
             </Canvas>
           </div>
