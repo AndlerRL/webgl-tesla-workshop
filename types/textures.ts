@@ -1,11 +1,14 @@
-import type { MeshProps } from "@react-three/fiber"
+import type { MeshPhysicalMaterialProps } from '@react-three/fiber'
 
 export interface Texture {
-  repeat?: {
-    x: number
-    y: number
-  }
+  repeat?: TextureRepeat
   name: TextureName
+  assets: Partial<MeshPhysicalMaterialProps>
 }
 
-export type TextureName = 'wall' | 'garage' | 'floor'
+export type TextureRepeat = {
+  x: number
+  y: number
+}
+
+export type TextureName = 'wall' | 'garage' | 'floor' | 'asphalt'

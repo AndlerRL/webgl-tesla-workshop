@@ -16,6 +16,7 @@ export const Box: React.FC<MeshProps> = (props) => {
 
   return (
     <>
+      <ContactShadows smooth width={10} height={10} opacity={0.5} blur={2} resolution={1080} far={10} rotation={[Math.PI / 2, 0, 0]} />
       <mesh ref={ref} {...props} smoothShadow castShadow receiveShadow>\
         <boxBufferGeometry />
         <meshPhysicalMaterial
