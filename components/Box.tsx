@@ -24,9 +24,9 @@ export const Box: React.FC<MeshProps> = (props) => {
           map={texture}
           // opacity={0.7}
           // transparent
-          // metalness={1}
-          // roughness={0}
-          clearcoat={1}
+          metalness={0}
+          roughness={1}
+          clearcoat={0.5}
           clearcoatRoughness={0.5}
         />
       </mesh>

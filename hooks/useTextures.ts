@@ -7,6 +7,7 @@ import create from 'zustand'
 import * as THREE from 'three'
 
 import { Texture, TextureName, TextureRepeat } from '../types/textures'
+import { useKTX2 } from '@react-three/drei'
 
 interface TextureState {
   textures: Texture[]
@@ -22,10 +23,28 @@ export const useTextures = (): TextureState => {
   const wall_texture_diff = useLoader(
     THREE.TextureLoader,
     '/assets/brickwall/textures/sandstone_brick_wall_01_diff_2k.jpg',
+    (loader) => {
+      console.log('loader_before_diff', loader)
+      loader.magFilter = 1440
+      loader.minFilter = 1440
+      console.log('loader_after_diff', loader)
+    }
   )
   const wall_texture_disp = useLoader(
     THREE.TextureLoader,
     '/assets/brickwall/textures/sandstone_brick_wall_01_disp_2k.png',
+    (loader) => {
+      loader.magFilter = 1440
+      loader.minFilter = 1440
+    }
+  )
+  const wall_texture_nor_gl = useLoader(
+    THREE.TextureLoader,
+    '/assets/brickwall/textures/sandstone_brick_wall_01_nor_gl_2k.png',
+  )
+  const wall_texture_rough = useLoader(
+    THREE.TextureLoader,
+    '/assets/brickwall/textures/sandstone_brick_wall_01_rough_2k.png',
   )
 
   const factory_wall_texture_diff = useLoader(
@@ -103,6 +122,8 @@ export const useTextures = (): TextureState => {
         texture.assets = {
           map: wall_texture_diff,
           displacementMap: wall_texture_disp,
+          // envMap: wall_texture_nor_gl,
+          roughnessMap: wall_texture_rough,
         }
         break
     }

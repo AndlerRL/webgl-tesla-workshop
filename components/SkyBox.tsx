@@ -1,15 +1,28 @@
-import { Cloud, ContactShadows, Environment, Sky, Stage } from '@react-three/drei'
+import { Cloud, ContactShadows, Environment, FlyControls, Sky, softShadows, Stage, useBounds } from '@react-three/drei'
 import { MeshProps, useLoader, useThree } from '@react-three/fiber'
-import React, { useRef } from 'react'
+import React, { useEffect, useRef } from 'react'
 import * as THREE from 'three'
 
 export const SkyBox: React.FC<MeshProps> = ({ children }) => {
   const controlsRef = useRef(null!)
+  const bounds = useBounds()
+
+  useEffect(() => {
+    if (controlsRef.current) {
+      console.log('controlsRef', controlsRef.current)
+    }
+  }, [controlsRef.current])
+
+  useEffect(() => {
+    if (bounds) {
+      bounds.refresh().clip().flip()
+    }
+  }, [bounds])
 
   return (
     <>
       <Sky
-        distance={450000}
+        distance={400}
         sunPosition={[-10, 15, 20]}
         rayleigh={0.75}
         mieCoefficient={0.011}
@@ -17,18 +30,8 @@ export const SkyBox: React.FC<MeshProps> = ({ children }) => {
         turbidity={0.9}
         inclination={0.15}
         azimuth={0.33}
+        exposure={0.2}
       />
-      {[...new Array(20)].map((_, index) => (
-        <Cloud
-          opacity={0.5}
-          speed={0.4} // Rotation speed
-          width={Math.random() * 400 + 100} // Width of the full cloud
-          depth={Math.random() * 3 + 0.8} // Z-dir depth
-          segments={10} // Number of particles
-          position={[Math.random() * 100 + 2, 600, Math.random() * 100 + 2]}
-          key={`cloud_background_${index}`}
-        />
-      ))}
       <Stage
         contactShadow={{ blur: 2, opacity: 0.6 }}
         controls={controlsRef}
@@ -38,6 +41,7 @@ export const SkyBox: React.FC<MeshProps> = ({ children }) => {
         adjustCamera
         shadows
       >
+        <FlyControls movementSpeed={50} dragToLook position={[0, 1, 0]} />
         {children}
       </Stage>
     </>

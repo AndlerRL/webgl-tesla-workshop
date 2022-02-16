@@ -7,11 +7,12 @@ import { Box } from '../components/Box'
 import styles from '../styles/Home.module.scss'
 import { Orbit } from '../components/Orbit'
 import * as THREE from 'three'
-import { ContactShadows, Environment, Sky, Stage } from '@react-three/drei'
+import { ContactShadows, Cylinder, Environment, Line, Sky, Stage, Tube } from '@react-three/drei'
 import { Floor } from '../components/Floor'
 import { Bulb } from '../components/Bulb'
 import { XGarageDoor, XWall, YWall } from '../components/Wall'
 import { SkyBox } from '../components/SkyBox'
+import { Roof } from '../components/Roof'
 
 declare global {
   namespace JSX {
@@ -41,14 +42,14 @@ const Home: NextPage = () => {
             <Canvas
               shadows
               style={{ background: '#00120e' }}
-              camera={{ position: [3, 3, 3], fov: 80 }}
+              camera={{ fov: 90, position: [0, 1, 0], removeEventListener: () => { } }}
+              flat
             >
               <Suspense fallback={null}>
                 <SkyBox>
-                  {/* <fog attach="fog" args={['white', 1, 10]} /> */}
                   <ambientLight intensity={0.2} />
                   <pointLight />
-                  <Bulb position={[0, 20, 0]} />
+                  <Bulb position={[0, 19.06, 0]} />
                   <Box position={[0, 5, 0]} scale={[2, 2.5, 2]} />
                   <XGarageDoor position={[49.75, 5.25, 0]} />
                   <XWall position={[50, 9.25, 0]} />
@@ -56,15 +57,17 @@ const Home: NextPage = () => {
                   <YWall position={[0, 9.25, 50]} />
                   <YWall position={[0, 9.25, -50]} />
                   <Floor />
+                  <Roof />
                 </SkyBox>
               </Suspense>
             </Canvas>
           </div>
-        )}
-      </main>
+        )
+        }
+      </main >
 
       <Footer />
-    </div>
+    </div >
   )
 }
 

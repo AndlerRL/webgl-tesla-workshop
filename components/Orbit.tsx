@@ -1,12 +1,10 @@
-import { extend, useThree } from '@react-three/fiber'
-import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls'
-
-extend({ OrbitControls })
+import { MapControls } from '@react-three/drei'
+import { useThree } from '@react-three/fiber'
 
 export const Orbit = () => {
   const { camera, gl } = useThree()
 
   return (
-    <orbitControls args={[camera, gl.domElement]} />
+    <MapControls args={[camera, gl.domElement]} target={[0, 0, 0]} />
   )
 }
