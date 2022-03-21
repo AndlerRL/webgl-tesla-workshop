@@ -28,54 +28,6 @@ export const Roof: React.FC<MeshProps> = (props) => {
           refractionRatio={0.1}
         />
       </RoundedBox>
-      <Cone
-        args={[50, 23]}
-        position={[-8.75, 33, 8.75]}
-        rotation={[0, 0.39, 0]}
-        receiveShadow
-      >
-        <meshPhysicalMaterial
-          color="#333"
-          clearcoat={1}
-          clearcoatRoughness={1}
-          roughness={1}
-          reflectivity={0.1}
-          flatShading
-          refractionRatio={0.1}
-        />
-      </Cone>
-      <Cone
-        args={[50, 23]}
-        position={[-8.75, 33, 0]}
-        rotation={[0, 0.39, 0]}
-        receiveShadow
-      >
-        <meshPhysicalMaterial
-          color="#333"
-          clearcoat={1}
-          clearcoatRoughness={1}
-          roughness={1}
-          reflectivity={0.1}
-          flatShading
-          refractionRatio={0.1}
-        />
-      </Cone>
-      <Cone
-        args={[50, 23]}
-        position={[-8.75, 33, -8.75]}
-        rotation={[0, 0.39, 0]}
-        receiveShadow
-      >
-        <meshPhysicalMaterial
-          color="#333"
-          clearcoat={1}
-          clearcoatRoughness={1}
-          roughness={1}
-          reflectivity={0.1}
-          flatShading
-          refractionRatio={0.1}
-        />
-      </Cone>
       <Plane
         args={[100, 100]}
         rotation={[-Math.PI / 2, 0, 0]}

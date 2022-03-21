@@ -3,7 +3,6 @@ import {
   MeshProps,
   useLoader,
 } from '@react-three/fiber'
-import create from 'zustand'
 import * as THREE from 'three'
 
 import { Texture, TextureName, TextureRepeat } from '../types/textures'
@@ -38,10 +37,10 @@ export const useTextures = (): TextureState => {
       loader.minFilter = 1440
     }
   )
-  const wall_texture_nor_gl = useLoader(
-    THREE.TextureLoader,
-    '/assets/brickwall/textures/sandstone_brick_wall_01_nor_gl_2k.png',
-  )
+  // const wall_texture_nor_gl = useLoader(
+  //   THREE.TextureLoader,
+  //   '/assets/brickwall/textures/sandstone_brick_wall_01_nor_gl_2k.png',
+  // )
   const wall_texture_rough = useLoader(
     THREE.TextureLoader,
     '/assets/brickwall/textures/sandstone_brick_wall_01_rough_2k.png',

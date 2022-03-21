@@ -30,3 +30,14 @@ export const setNewMaterial = (type?: NewMaterialType, params?: NewMaterialParam
       return new THREE.MeshBasicMaterial(params)
   }
 }
+
+export const scaleDown = (object: Object3D<Event>) => {
+  object.scale.x = 1
+  object.scale.y = 1
+  object.scale.z = 1
+}
+export const scaleUp = (object: Object3D<Event>) => {
+  object.scale.x = 1.5
+  object.scale.y = 1.5
+  object.scale.z = 1.5
+}
