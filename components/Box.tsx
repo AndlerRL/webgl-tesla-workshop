@@ -12,6 +12,7 @@ export const Box: React.FC<MeshProps> = (props) => {
   const { active_mesh, setActivityMesh, setActiveMesh } = useStore()
   const ref = useRef<THREE.Mesh>(null!)
   const texture = useLoader(THREE.TextureLoader, '/assets/wood.jpg')
+
   useFrame(state => {
     if (!ref.current) return
 
