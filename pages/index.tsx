@@ -15,6 +15,7 @@ import { useStore } from '../store/mesh-store';
 import { ActiveMesh } from '../store/model/Mesh'
 import { Event, Object3D } from 'three';
 import { ColorPickerPanel } from '../components/ColorPickerPanel'
+import { Draggable } from '../components/Draggable'
 
 declare global {
   namespace JSX {
@@ -41,7 +42,7 @@ const Home: NextPage = () => {
           <Canvas
             shadows
             style={{ background: '#00120e' }}
-            camera={{ fov: 90, position: [0, 1, 0], removeEventListener: () => { } }}
+            camera={{ fov: 90, position: [50, 25, 400], removeEventListener: () => { } }}
             flat
           >
             <Suspense fallback={null}>

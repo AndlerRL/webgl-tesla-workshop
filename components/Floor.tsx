@@ -3,14 +3,18 @@ import type { MeshProps } from '@react-three/fiber'
 import React from 'react'
 import { useTextures } from '../hooks/useTextures'
 import { Orbit } from './Orbit'
+import { useStore } from '../store/mesh-store';
 
 export const Floor: React.FC<MeshProps> = (props) => {
+  const { dragging } = useStore()
   const { setTextures } = useTextures()
   const floor_texture = setTextures('floor', { x: 10, y: 10 })
 
+  console.log(dragging, 'dragging')
+
   return (
     <>
-      <Orbit />
+      {!dragging && <Orbit />}
       <axesHelper args={[200]} />
       <Bounds fit clip damping={6} margin={1.2}>
         <Plane

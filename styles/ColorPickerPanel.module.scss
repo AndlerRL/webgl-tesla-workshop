@@ -6,11 +6,12 @@
     z-index: 100;
   }
   &__item {
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(45deg, #fff 15%, #011 125%);
-    padding: 2px;
-    border-radius: 12px;
+    border: 2px solid #f2f2f200;
+    width: 85px;
+    height: 74px;
+    background: url('/assets/UI/color-picker-metal-plate.png') no-repeat center;
+    background-size: contain;
+    border-radius: 4px;
     margin: 8px 12px;
     display: flex;
     align-items: center;
@@ -18,15 +19,18 @@
     transition: all 0.14s ease-in-out;
 
     > div {
-      border: 1px solid #f2f2f2aa;
-      width: 46px;
-      height: 46px;
-      border-radius: 12px;
+      transition: all 0.14s ease-in-out;
+      background-blend-mode: color-burn;
+      width: 45px;
+      height: 45px;
+      border-radius: 2px;
+      opacity: 0.5;
     }
-
+    
     &:hover {
+      border: 2px solid #f2f2f2;
       > div {
-        border: 2px solid #f2f2f2;
+        opacity: 0.9;
       }
     }
   }

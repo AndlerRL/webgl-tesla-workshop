@@ -32,12 +32,36 @@ export const setNewMaterial = (type?: NewMaterialType, params?: NewMaterialParam
 }
 
 export const scaleDown = (object: Object3D<Event>) => {
-  object.scale.x = 1
-  object.scale.y = 1
-  object.scale.z = 1
+  let frames = 0
+
+  const interval = setInterval(() => {
+    if (frames === 60) {
+      clearInterval(interval)
+
+      return
+    }
+
+    object.scale.x -= 0.016666666666
+    object.scale.y -= 0.016666666666
+    object.scale.z -= 0.016666666666
+
+    frames++
+  }, 4)
 }
 export const scaleUp = (object: Object3D<Event>) => {
-  object.scale.x = 1.5
-  object.scale.y = 1.5
-  object.scale.z = 1.5
+  let frames = 0
+
+  const interval = setInterval(() => {
+    if (frames === 60) {
+      clearInterval(interval)
+
+      return
+    }
+
+    object.scale.x += 0.016666666666
+    object.scale.y += 0.016666666666
+    object.scale.z += 0.016666666666
+
+    frames++
+  }, 4)
 }

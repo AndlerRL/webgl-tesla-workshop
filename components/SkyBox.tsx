@@ -41,7 +41,6 @@ export const SkyBox: React.FC<MeshProps> = ({ children }) => {
         adjustCamera
         shadows
       >
-        <FlyControls movementSpeed={50} dragToLook position={[0, 1, 0]} />
         {children}
       </Stage>
     </>
